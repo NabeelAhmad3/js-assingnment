@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello/Goodbye Speakers</title>
+</head>
+<body>
+  <h1>Check the console for greetings!</h1>
+
+  <script>
+    (function(window) {
+      var helloSpeaker = {};
+      helloSpeaker.speak = function(name) {
+        console.log("Hello " + name);
+      };
+      window.helloSpeaker = helloSpeaker;
+    })(window);
+
+    (function(window) {
+      var byeSpeaker = {};
+      byeSpeaker.speak = function(name) {
+        console.log("Goodbye " + name);
+      };
+      window.byeSpeaker = byeSpeaker;
+    })(window);
+
+    var names = ["Yaakov", "John", "Paul", "Jen", "Jason", "Mary"];
+
+    for (var i = 0; i < names.length; i++) {
+      var name = names[i];
+      var firstLetter = name.charAt(0).toLowerCase();
+
+      if (firstLetter === 'j') {
+        byeSpeaker.speak(name);
+      } else {
+        helloSpeaker.speak(name);
+      }
+    }
+  </script>
+</body>
+</html>
